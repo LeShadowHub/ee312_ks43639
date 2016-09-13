@@ -96,7 +96,7 @@ int main(void) {
 	}
 }
 
-//done
+//Austin time to Ireland
 int time_AtoI(int hour,int min) {
 	int iHour = (hour + 6)%24;
 	if (hour >= 18) {
@@ -108,7 +108,7 @@ int time_AtoI(int hour,int min) {
 	return 0;
 }
 
-//done
+//Ireland time to Austin
 int time_ItoA(int hour,int min) {
 	int aHour = (hour - 6) % 24;
 	if (aHour < 0) {
@@ -123,7 +123,7 @@ int time_ItoA(int hour,int min) {
 	return 0;
 }
 
-//done
+//USD to Euro
 int currency_UtoE(int dollar,int cents) {
 	double totalMoney = (double)dollar + ((double)cents / 100);
 	double euro = totalMoney * USTOEURO; 
@@ -131,7 +131,7 @@ int currency_UtoE(int dollar,int cents) {
 	return 0;
 }
 
-//done
+//Euro to USD
 int currency_EtoU(double value) {
 	double totalDollars = (double)value * EUROTOUS; 
 	int dollars = totalDollars;
@@ -140,14 +140,14 @@ int currency_EtoU(double value) {
 	return 0;
 }
 
-//done
+//Fahrenheit to Celsius
 int temp_FtoC(int temp) {
 	double celcius = ((double)temp - 32) * 5 / 9; 
 	printf("Temperature in Celsius is: %f\n", celcius);
 	return 0;
 }
 
-//done
+//Celcius to Fahrenheit
 int temp_CtoF(double temp) {
 	double hold = (double)temp * 9 / 5 + 32.5; 
 	int fahren = hold;
@@ -155,7 +155,7 @@ int temp_CtoF(double temp) {
 	return 0;
 }
 
-//done
+//Kg to Pounds
 int weight_KtoP(double weight) {
 	double totalPounds = weight * 1000 / POUNDTOGRAM;
 	int pounds = totalPounds; 
@@ -164,7 +164,7 @@ int weight_KtoP(double weight) {
 	return 0;
 }
 
-//done
+//Pounds to Kg
 int weight_PtoK(int pound,int ounce) {
 	double totalWeight = (double)pound + ((double)ounce / 16); 
 	double kilo = totalWeight * POUNDTOGRAM / 1000; 
@@ -172,14 +172,14 @@ int weight_PtoK(int pound,int ounce) {
 	return 0;
 }
 
-//done
+//Km to Mi
 int distance_KtoM(double distance) {
 	double miles = distance * KILOTOMI;
 	printf("Distance in miles is: %f mi\n", miles);
 	return 0;
 }
 
-//done
+//Mi to Km
 int distance_MtoK(double distance) {
 	double kilo = distance / KILOTOMI;
 	printf("Distance in km is: %f km\n", kilo);
