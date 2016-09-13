@@ -136,6 +136,10 @@ int currency_EtoU(double value) {
 	double totalDollars = (double)value * EUROTOUS; 
 	int dollars = totalDollars;
 	int cents = (totalDollars - dollars) * 100 + 0.5; 
+	/*if (cents == 100) {
+		dollars += 1;
+		cents = 0;
+	}*/
 	printf("USD value is: $%d %d\n", dollars, cents);
 	return 0;
 }
@@ -160,6 +164,10 @@ int weight_KtoP(double weight) {
 	double totalPounds = weight * 1000 / POUNDTOGRAM;
 	int pounds = totalPounds; 
 	int ounces = (totalPounds - pounds) * 16 + 0.5; 
+	if (ounces == 16) {
+		pounds += 1;
+		ounces = 0;
+	}
 	printf("Weight in pounds and ounces is: %d lb %d oz\n", pounds, ounces);
 	return 0;
 }
