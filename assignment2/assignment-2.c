@@ -6,6 +6,12 @@ EE312-Assignment 2
 
 #include <stdio.h>
 
+//conversions
+const double EUROTOUS = 1.13;
+const double USTOEURO = 0.89;
+const double POUNDTOGRAM = 453.59237;
+const double KILOTOMI = 0.6213712;
+
 int main(void) {
 
 	int selection = 0;
@@ -18,14 +24,14 @@ int main(void) {
 	int irishTimeM = 0;
 	int usdDollar = 0;
 	int usdCents = 0;
-	int eur = 0;
+	double eur = 0;
 	int tempF = 0;
-	int tempC = 0;
-	int weightKg = 0;
+	double tempC = 0;
+	double weightKg = 0;
 	int weightPound = 0;
 	int weightOunce = 0;
-	int distKm = 0;
-	int distMi = 0;
+	double distKm = 0;
+	double distMi = 0;
 
 	//main loop
 	while (exit == 0) {
@@ -49,7 +55,7 @@ int main(void) {
 		}
 		if (selection == 4) {
 			printf("Enter EUR value: ");
-			scanf("%d", &eur);
+			scanf("%lf", &eur);
 			currency_EtoU(eur);
 		}
 		if (selection == 5) {
@@ -59,12 +65,12 @@ int main(void) {
 		}
 		if (selection == 6) {
 			printf("Enter temperature in Celsius: ");
-			scanf("%d", &tempC);
+			scanf("%lf", &tempC);
 			temp_CtoF(tempC);
 		}
 		if (selection == 7) {
 			printf("Enter weight in kg: ");
-			scanf("%d", &weightKg);
+			scanf("%lf", &weightKg);
 			weight_KtoP(weightKg);
 		}
 		if (selection == 8) {
@@ -74,13 +80,13 @@ int main(void) {
 		}
 		if (selection == 9) {
 			printf("Enter distances in km: ");
-			scanf("%d", &distKm);
+			scanf("%lf", &distKm);
 			distance_KtoM(distKm);
 
 		}
 		if (selection == 10) {
 			printf("Enter distance in miles: ");
-			scanf("%d", &distMi);
+			scanf("%lf", &distMi);
 			distance_MtoK(distMi);
 		}
 		if (selection == 11) {
@@ -91,7 +97,7 @@ int main(void) {
 }
 
 //done
-int time_AtoI(hour, min) {
+int time_AtoI(int hour,int min) {
 	int iHour = (hour + 6)%24;
 	if (hour >= 18) {
 		printf("The time in Ireland equivalent to %d %d in Austin is %d %d of the next day\n", hour, min, iHour, min);
@@ -103,7 +109,7 @@ int time_AtoI(hour, min) {
 }
 
 //done
-int time_ItoA(hour, min) {
+int time_ItoA(int hour,int min) {
 	int aHour = (hour - 6) % 24;
 	if (aHour < 0) {
 		aHour = aHour + 24;
@@ -118,16 +124,16 @@ int time_ItoA(hour, min) {
 }
 
 //done
-int currency_UtoE(dollar, cents) {
+int currency_UtoE(int dollar,int cents) {
 	double totalMoney = (double)dollar + ((double)cents / 100);
-	double euro = totalMoney * 0.89; 
+	double euro = totalMoney * USTOEURO; 
 	printf("EUR value is: %f Euros\n", euro);
 	return 0;
 }
 
 //done
-int currency_EtoU(value) {
-	double totalDollars = (double)value * 1.13; 
+int currency_EtoU(double value) {
+	double totalDollars = (double)value * EUROTOUS; 
 	int dollars = totalDollars;
 	int cents = (totalDollars - dollars) * 100 + 0.5; 
 	printf("USD value is: $%d %d\n", dollars, cents);
@@ -135,14 +141,14 @@ int currency_EtoU(value) {
 }
 
 //done
-int temp_FtoC(temp) {
+int temp_FtoC(int temp) {
 	double celcius = ((double)temp - 32) * 5 / 9; 
 	printf("Temperature in Celsius is: %f\n", celcius);
 	return 0;
 }
 
 //done
-int temp_CtoF(temp) {
+int temp_CtoF(double temp) {
 	double hold = (double)temp * 9 / 5 + 32.5; 
 	int fahren = hold;
 	printf("Temperature in Fahrenheit is: %d\n", fahren);
@@ -150,8 +156,8 @@ int temp_CtoF(temp) {
 }
 
 //done
-int weight_KtoP(weight) {
-	double totalPounds = weight * 1000 / 453.59237;
+int weight_KtoP(double weight) {
+	double totalPounds = weight * 1000 / POUNDTOGRAM;
 	int pounds = totalPounds; 
 	int ounces = (totalPounds - pounds) * 16 + 0.5; 
 	printf("Weight in pounds and ounces is: %d lb %d oz\n", pounds, ounces);
@@ -159,24 +165,24 @@ int weight_KtoP(weight) {
 }
 
 //done
-int weight_PtoK(pound, ounce) {
+int weight_PtoK(int pound,int ounce) {
 	double totalWeight = (double)pound + ((double)ounce / 16); 
-	double kilo = totalWeight * 453.59237 / 1000; 
+	double kilo = totalWeight * POUNDTOGRAM / 1000; 
 	printf("Weight in kg is: %f kg\n", kilo);
 	return 0;
 }
 
 //done
-int distance_KtoM(distance) {
-	double miles = distance * 0.6213712;
+int distance_KtoM(double distance) {
+	double miles = distance * KILOTOMI;
 	printf("Distance in miles is: %f mi\n", miles);
 	return 0;
 }
 
 //done
-int distance_MtoK(distance) {
-	double kilo = distance / 0.6213712;
-	printf("Distance in km is: %f k\n", kilo);
+int distance_MtoK(double distance) {
+	double kilo = distance / KILOTOMI;
+	printf("Distance in km is: %f km\n", kilo);
 	return 0;
 }
 
