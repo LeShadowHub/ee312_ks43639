@@ -23,7 +23,8 @@ int quoteTrack = 2;
 int funcStart = FALSE;
 
 //search for number of lines of codes
-void findLOC(char *fpIn, char *line) {
+void findLOC(char *fpIn, char *line) 
+BEGIN_FCN
 
 	if (reCount == TRUE) {
 		linesOfCode = 0;
@@ -73,10 +74,11 @@ void findLOC(char *fpIn, char *line) {
 	//check
 	//printf("%d\n", linesOfCode);
 	lineCommentOn = FALSE;
-}
+END_FCN
 
 //find and print function name
-void findFunc(char *fpIn, char *fwIn, char *line) {
+void findFunc(char *fpIn, char *fwIn, char *line) 
+BEGIN_FCN
 
 	int counter = 0;
 	int lineCounter = 0;
@@ -130,9 +132,10 @@ void findFunc(char *fpIn, char *fwIn, char *line) {
 		fprintf(fwIn, "\t");
 		printf("\t");
 	}
-}
+END_FCN
 
-int main(void) {
+int main(void) 
+BEGIN_FCN
 
 	//int Bcounter = 0;
 	//int Ecounter = 0;
@@ -284,4 +287,4 @@ int main(void) {
 		fclose(fp);
 	}
 	return 0;
-}
+END_FCN
